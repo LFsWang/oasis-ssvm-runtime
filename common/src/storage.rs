@@ -8,6 +8,7 @@ use ethcore;
 use failure::{format_err, Fallible};
 use io_context::Context;
 use oasis_core_runtime::storage::{KeyValue, StorageContext};
+use oasis_ssvm_runtime_parity::mkvs;
 
 /// MKVS implementation which uses the thread-local MKVS provided by
 /// the `StorageContext`.
@@ -22,7 +23,7 @@ impl ThreadLocalMKVS {
     }
 }
 
-/*impl ethcore::mkvs::MKVS for ThreadLocalMKVS {
+impl mkvs::MKVS for ThreadLocalMKVS {
     fn get(&self, key: &[u8]) -> Option<Vec<u8>> {
         StorageContext::with_current(|mkvs, _untrusted_local| {
             mkvs.get(Context::create_child(&self.ctx), key)
@@ -41,12 +42,12 @@ impl ThreadLocalMKVS {
         })
     }
 
-    fn boxed_clone(&self) -> Box<dyn ethcore::mkvs::MKVS> {
+    fn boxed_clone(&self) -> Box<dyn mkvs::MKVS> {
         Box::new(ThreadLocalMKVS {
             ctx: self.ctx.clone(),
         })
     }
-}*/
+}
 
 /// In-memory trivial key/value storage.
 pub struct MemoryKeyValue(Mutex<HashMap<Vec<u8>, Vec<u8>>>);

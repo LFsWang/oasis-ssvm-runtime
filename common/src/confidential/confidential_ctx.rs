@@ -1,25 +1,26 @@
-/*#![deny(warnings)]
+//#![deny(warnings)]
 use std::sync::Arc;
 
 use ethereum_types::{Address, H256};
-use failure::ResultExt;
+//use failure::ResultExt;
 use io_context::Context;
-use keccak_hash::keccak;
-use oasis_core_keymanager_client::{KeyManagerClient, KeyPair, KeyPairId, PublicKey};
+//use keccak_hash::keccak;
+use oasis_core_keymanager_client::{KeyManagerClient, KeyPair, PublicKey}; //KeyPairId
 use oasis_core_runtime::{
     common::crypto::{
         hash::Hash,
         mrae::{
-            deoxysii::{DeoxysII, KEY_SIZE, TAG_SIZE},
-            nonce::{Nonce, NONCE_SIZE, TAG_SIZE as NONCE_TAG_SIZE},
+            deoxysii::{DeoxysII, KEY_SIZE}, //, TAG_SIZE
+            nonce::{Nonce, NONCE_SIZE, TAG_SIZE as NONCE_TAG_SIZE}, //
         },
     },
-    executor::Executor,
+    //executor::Executor,
 };
-use vm::{AuthenticatedPayload, ConfidentialCtx as EthConfidentialCtx, Error, Result};
+use vm::{/*AuthenticatedPayload, ConfidentialCtx as EthConfidentialCtx,*/ Error, Result};
 use zeroize::Zeroize;
 
 use super::crypto;
+
 
 /// Facade for the underlying confidential contract services to be injected into
 /// the parity state. Manages the confidential state--i.e., encryption keys and
@@ -103,11 +104,11 @@ impl ConfidentialCtx {
 
     pub fn decrypt(&self, encrypted_tx_data: Vec<u8>) -> Result<Vec<u8>> {
         if self.contract.is_none() {
-            return Err(Error::Confidential("The confidential context must have a contract key when opening encrypted transaction data".to_string()));
+            return Err(Error::Internal("The confidential context must have a contract key when opening encrypted transaction data".to_string()));
         }
         let contract_secret_key = self.contract.as_ref().unwrap().1.input_keypair.get_sk();
         let decryption = crypto::decrypt(Some(encrypted_tx_data), contract_secret_key)
-            .map_err(|err| Error::Confidential(err.to_string()))?;
+            .map_err(|err| Error::Internal(err.to_string()))?;
 
         Ok(decryption.plaintext)
     }
@@ -128,8 +129,8 @@ impl ConfidentialCtx {
 
         // Storage encryption nonce <- H(prev_block_hash || address)[:11] || 0x00000000
         self.next_storage_nonce = self.contract.as_ref().map(|c| {
-            let mut buffer = self.prev_block_hash.to_vec();
-            buffer.extend_from_slice(&c.0);
+            let mut buffer = self.prev_block_hash.as_bytes().to_vec();
+            //buffer.extend_from_slice(&c.0); //FIXME
             let hash = Hash::digest_bytes(&buffer);
 
             let mut nonce = [0u8; NONCE_SIZE];
@@ -141,7 +142,7 @@ impl ConfidentialCtx {
         old_contract_address
     }
 }
-
+/*
 impl EthConfidentialCtx for ConfidentialCtx {
     fn is_encrypting(&self) -> bool {
         // Note: self.activated == true and self.contract.is_some() == false when making

@@ -1,10 +1,12 @@
 //! Common parity helpers.
 use std::sync::Arc;
 
-/*
-use ethcore::{self, state::Account};
+use keccak_hasher::KeccakHasher;
+use kvdb::DBValue;
+
+use account_state::{backend, Account};
 use ethereum_types::{Address, H256};
-use hashdb::HashDB;
+use hash_db::HashDB;
 
 /// Null backend for parity state.
 ///
@@ -12,12 +14,12 @@ use hashdb::HashDB;
 /// has been updated to use our MKVS for storage.
 pub struct NullBackend;
 
-impl ethcore::state::backend::Backend for NullBackend {
-    fn as_hashdb(&self) -> &dyn HashDB {
+impl backend::Backend for NullBackend {
+    fn as_hash_db(&self) -> &dyn HashDB<KeccakHasher, DBValue> {
         unimplemented!("HashDB should never be used");
     }
 
-    fn as_hashdb_mut(&mut self) -> &mut dyn HashDB {
+    fn as_hash_db_mut(&mut self) -> &mut dyn HashDB<KeccakHasher, DBValue> {
         unimplemented!("HashDB should never be used");
     }
 
@@ -39,9 +41,8 @@ impl ethcore::state::backend::Backend for NullBackend {
     fn get_cached_code(&self, _: &H256) -> Option<Arc<Vec<u8>>> {
         None
     }
-    fn note_non_null_account(&self, _: &Address) {}
-    fn is_known_null(&self, _: &Address) -> bool {
-        false
-    }
+    //fn note_non_null_account(&self, _: &Address) {}
+    //fn is_known_null(&self, _: &Address) -> bool {
+    //    false
+    //}
 }
-*/
