@@ -1,4 +1,4 @@
-extern crate example_runtime_api;
+extern crate oasis_runtime_api;
 extern crate failure;
 extern crate io_context;
 extern crate oasis_core_runtime;
@@ -8,7 +8,7 @@ use std::sync::Arc;
 use failure::{format_err, Fallible};
 use io_context::Context as IoContext;
 
-use example_runtime_api::{with_api, KeyValue};
+use oasis_runtime_api::{with_api, KeyValue};
 use oasis_core_runtime::{
     common::{runtime::RuntimeId, version::Version},
     rak::RAK,

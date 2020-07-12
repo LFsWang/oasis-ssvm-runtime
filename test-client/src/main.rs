@@ -1,6 +1,6 @@
 #[macro_use]
 extern crate clap;
-extern crate example_runtime_api;
+extern crate oasis_runtime_api;
 extern crate grpcio;
 extern crate io_context;
 extern crate oasis_core_client;
@@ -14,7 +14,7 @@ use grpcio::EnvBuilder;
 use io_context::Context;
 use tokio::runtime::Runtime;
 
-use example_runtime_api::{with_api, KeyValue};
+use oasis_runtime_api::{with_api, KeyValue};
 use oasis_core_client::{
     create_txn_api_client,
     transaction::{Query, QueryCondition},
