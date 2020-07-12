@@ -6,7 +6,7 @@ description = "Example runtime test client"
 
 [dependencies]
 # Internal.
-oasis-runtime-api = { path = "../api" }
+oasis-ssvm-runtime-api = { path = "../api" }
 
 # Oasis Core.
 oasis-core-client = { git = "https://github.com/oasislabs/oasis-core", tag = "v20.7" }

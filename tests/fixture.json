@@ -31,7 +31,7 @@
             "kind": 1,
             "entity": 0,
             "keymanager": -1,
-            "binary": ".runtime/example-runtime",
+            "binary": ".runtime/oasis-ssvm-runtime",
             "genesis_state": "",
             "genesis_round": 0,
             "executor": {

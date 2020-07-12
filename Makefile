@@ -65,12 +65,12 @@ download-artifacts:
 
 symlink-artifacts:
 	@$(ECHO) "$(CYAN)*** Symlinking runtime build artifacts...$(OFF)"
-	@scripts/symlink_artifact.sh "$(RUNTIME_ROOT_PATH)" example-runtime "$(RUNTIME_CARGO_TARGET_DIR)/debug"
+	@scripts/symlink_artifact.sh "$(RUNTIME_ROOT_PATH)" oasis-ssvm-runtime "$(RUNTIME_CARGO_TARGET_DIR)/debug"
 	@$(ECHO) "$(CYAN)*** Symlinking done!$(OFF)"
 
 runtime:
-	@$(ECHO) "$(CYAN)*** Building example-runtime...$(OFF)"
-	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p example-runtime $(EXTRA_BUILD_ARGS)
+	@$(ECHO) "$(CYAN)*** Building oasis-ssvm-runtime...$(OFF)"
+	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p oasis-ssvm-runtime $(EXTRA_BUILD_ARGS)
 
 test-client:
 	@$(ECHO) "$(CYAN)*** Building test-client...$(OFF)"

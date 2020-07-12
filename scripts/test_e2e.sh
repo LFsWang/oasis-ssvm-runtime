@@ -13,7 +13,7 @@ oasis_runner="${OASIS_CORE_ROOT_PATH}/go/oasis-net-runner/oasis-net-runner"
 test_client="${RUNTIME_CARGO_TARGET_DIR}/debug/test-client"
 
 # Prepare an empty data directory.
-data_dir="/var/tmp/example-runtime-runner"
+data_dir="/var/tmp/oasis-ssvm-runtime-runner"
 rm -rf "${data_dir}"
 mkdir -p "${data_dir}"
 chmod -R go-rwx "${data_dir}"

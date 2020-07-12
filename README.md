@@ -6,7 +6,7 @@ an Ethereum flavored WebAssembly(ewasm) execution environment defined [here](htt
 
 ## How to build and run oasis-ssvm-runtime `make test-e2e`
 
-Use second-state/oasis-ssvm-runtime (official example-runtime will build fail because Cargo.lock outdated).
+Use second-state/oasis-ssvm-runtime (official oasis-ssvm-runtime will build fail because Cargo.lock outdated).
 
 In the following instructions, the top-level directory is the directory
 where the code has been checked out.

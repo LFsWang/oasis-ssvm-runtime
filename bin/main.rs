@@ -1,14 +1,34 @@
-extern crate oasis_runtime_api;
+//! Oasis Eth/WASI runtime entry point.
+extern crate oasis_ssvm_runtime;
+
+extern crate ethcore;
+extern crate vm;
+extern crate account_state;
+extern crate ethereum_types;
 extern crate failure;
 extern crate io_context;
+extern crate oasis_core_keymanager_client;
 extern crate oasis_core_runtime;
+extern crate oasis_ssvm_runtime_api;
+extern crate oasis_ssvm_runtime_common;
+extern crate oasis_ssvm_runtime_parity;
+extern crate serde_bytes;
 
 use std::sync::Arc;
 
 use failure::{format_err, Fallible};
 use io_context::Context as IoContext;
 
-use oasis_runtime_api::{with_api, KeyValue};
+/*use oasis_core_runtime::{
+    common::version::Version, rak::RAK, version_from_cargo, Protocol, RpcDemux, RpcDispatcher,
+    TxnDispatcher,
+};*/
+
+//use oasis_ssvm_runtime_::dispatcher::Dispatcher;
+//use oasis_ethwasi_runtime_keymanager::trusted_policy_signers;
+
+
+use oasis_ssvm_runtime_api::{with_api, KeyValue};
 use oasis_core_runtime::{
     common::{runtime::RuntimeId, version::Version},
     rak::RAK,
