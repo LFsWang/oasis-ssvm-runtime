@@ -130,7 +130,7 @@ impl ConfidentialCtx {
         // Storage encryption nonce <- H(prev_block_hash || address)[:11] || 0x00000000
         self.next_storage_nonce = self.contract.as_ref().map(|c| {
             let mut buffer = self.prev_block_hash.as_bytes().to_vec();
-            //buffer.extend_from_slice(&c.0); //FIXME
+            buffer.extend_from_slice(&c.0.as_bytes());
             let hash = Hash::digest_bytes(&buffer);
 
             let mut nonce = [0u8; NONCE_SIZE];

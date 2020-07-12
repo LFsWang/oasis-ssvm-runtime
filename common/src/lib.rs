@@ -10,6 +10,7 @@ extern crate lazy_static;
 extern crate oasis_core_keymanager_client;
 extern crate oasis_core_runtime;
 extern crate vm;
+extern crate spec;
 extern crate zeroize;
 extern crate account_state;
 extern crate keccak_hasher;

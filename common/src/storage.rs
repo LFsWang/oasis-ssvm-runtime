@@ -4,7 +4,7 @@ use std::{
     sync::{Arc, Mutex},
 };
 
-use ethcore;
+//use ethcore;
 use failure::{format_err, Fallible};
 use io_context::Context;
 use oasis_core_runtime::storage::{KeyValue, StorageContext};
