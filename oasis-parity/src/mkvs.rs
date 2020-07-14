@@ -22,7 +22,7 @@ pub trait MKVS {
 	fn remove(&mut self, key: &[u8]) -> Option<Vec<u8>>;
 
 	/// Clone the MKVS.
-	fn boxed_clone(&self) -> Box<MKVS>;
+	fn boxed_clone(&self) -> Box<dyn MKVS>;
 }
 
 impl<T: ?Sized + MKVS> MKVS for Box<T> {
@@ -38,18 +38,18 @@ impl<T: ?Sized + MKVS> MKVS for Box<T> {
 		MKVS::remove(&mut **self, key)
 	}
 
-	fn boxed_clone(&self) -> Box<MKVS> {
+	fn boxed_clone(&self) -> Box<dyn MKVS> {
 		MKVS::boxed_clone(&**self)
 	}
 }
 
 pub struct PrefixedMKVS<'a> {
-	mkvs: &'a mut MKVS,
+	mkvs: &'a mut dyn MKVS,
 	prefix: &'a [u8],
 }
 
 impl<'a> PrefixedMKVS<'a> {
-	pub fn new(mkvs: &'a mut MKVS, prefix: &'a [u8]) -> Self {
+	pub fn new(mkvs: &'a mut dyn MKVS, prefix: &'a [u8]) -> Self {
 		Self { mkvs, prefix }
 	}
 
@@ -91,18 +91,18 @@ impl<'a> MKVS for PrefixedMKVS<'a> {
 		self.mkvs.remove(&key)
 	}
 
-	fn boxed_clone(&self) -> Box<MKVS> {
+	fn boxed_clone(&self) -> Box<dyn MKVS> {
 		self.mkvs.boxed_clone()
 	}
 }
 
 pub struct ReadOnlyPrefixedMKVS<'a> {
-	mkvs: &'a MKVS,
+	mkvs: &'a dyn MKVS,
 	prefix: &'a [u8],
 }
 
 impl<'a> ReadOnlyPrefixedMKVS<'a> {
-	pub fn new(mkvs: &'a MKVS, prefix: &'a [u8]) -> Self {
+	pub fn new(mkvs: &'a dyn MKVS, prefix: &'a [u8]) -> Self {
 		Self { mkvs, prefix }
 	}
 
@@ -124,15 +124,15 @@ impl<'a> MKVS for ReadOnlyPrefixedMKVS<'a> {
 		self.mkvs.get(&key)
 	}
 
-	fn insert(&mut self, key: &[u8], value: &[u8]) -> Option<Vec<u8>> {
+	fn insert(&mut self, _key: &[u8], _value: &[u8]) -> Option<Vec<u8>> {
 		unimplemented!("MKVS is read-only");
 	}
 
-	fn remove(&mut self, key: &[u8]) -> Option<Vec<u8>> {
+	fn remove(&mut self, _key: &[u8]) -> Option<Vec<u8>> {
 		unimplemented!("MKVS is read-only");
 	}
 
-	fn boxed_clone(&self) -> Box<MKVS> {
+	fn boxed_clone(&self) -> Box<dyn MKVS> {
 		self.mkvs.boxed_clone()
 	}
 }
@@ -163,7 +163,7 @@ impl MKVS for MemoryMKVS {
 		self.0.lock().unwrap().remove(key).map(|v| v.clone())
 	}
 
-	fn boxed_clone(&self) -> Box<MKVS> {
+	fn boxed_clone(&self) -> Box<dyn MKVS> {
 		Box::new(self.clone())
 	}
 }

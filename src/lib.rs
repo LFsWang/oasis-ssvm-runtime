@@ -12,8 +12,8 @@ extern crate ethkey;
 extern crate serde_json;
 
 pub mod block;
-//pub mod dispatcher;
-//pub mod methods;
+pub mod dispatcher;
+pub mod methods;
 
 //#[cfg(feature = "test")]
 //pub mod test;

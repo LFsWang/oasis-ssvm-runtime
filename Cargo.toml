@@ -25,8 +25,11 @@ cc = "1.0.41"
 ethcore = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
 account-state = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
 vm = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
-#EnvInfo = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
+common-types = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
+executive-state = { git = "https://github.com/openethereum/openethereum", tag = "v3.0.1" }
+rlp = "0.4.0"
 ethereum-types = "0.9.2" # ori 0.3.0
+
 # Oasis Core.
 oasis-core-runtime = { git = "https://github.com/oasislabs/oasis-core", tag = "v20.7" }
 oasis-core-keymanager-client = { git = "https://github.com/oasisprotocol/oasis-core", tag = "v20.7" }

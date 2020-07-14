@@ -4,6 +4,9 @@ extern crate oasis_ssvm_runtime;
 extern crate ethcore;
 extern crate vm;
 extern crate account_state;
+extern crate common_types;
+extern crate executive_state;
+extern crate rlp;
 extern crate ethereum_types;
 extern crate failure;
 extern crate io_context;
@@ -24,8 +27,8 @@ use io_context::Context as IoContext;
     TxnDispatcher,
 };*/
 
-//use oasis_ssvm_runtime_::dispatcher::Dispatcher;
-//use oasis_ethwasi_runtime_keymanager::trusted_policy_signers;
+//use oasis_ssvm_runtime::dispatcher::Dispatcher;
+//use oasis_ssvm_runtime_keymanager::trusted_policy_signers;
 
 
 use oasis_ssvm_runtime_api::{with_api, KeyValue};
