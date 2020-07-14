@@ -40,13 +40,13 @@ endif
 	all \
 	check check-oasis-core \
 	download-artifacts \
-	runtime test-client \
+	runtime test-client gateway\
 	genesis-update \
 	clean clean-test-e2e \
 	fmt \
 	test test-unit test-e2e
 
-all: runtime test-client
+all: runtime gateway test-client
 	@$(ECHO) "$(CYAN)*** Everything built successfully!$(OFF)"
 
 check: check-oasis-core
@@ -71,6 +71,10 @@ symlink-artifacts:
 runtime:
 	@$(ECHO) "$(CYAN)*** Building oasis-ssvm-runtime...$(OFF)"
 	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p oasis-ssvm-runtime $(EXTRA_BUILD_ARGS)
+
+gateway:
+	@$(ECHO) "$(CYAN)*** Building web3-gateway...$(OFF)"
+	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p web3-gateway $(EXTRA_BUILD_ARGS) $(CARGO_BUILD_ARGS)
 
 test-client:
 	@$(ECHO) "$(CYAN)*** Building test-client...$(OFF)"
