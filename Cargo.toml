@@ -18,6 +18,7 @@ path ="bin/main.rs"
 oasis-ssvm-runtime-common = { path = "./common" }
 oasis-ssvm-runtime-api = { path = "./api" }
 oasis-ssvm-runtime-parity = { path = "./oasis-parity" }
+oasis-ssvm-runtime-keymanager = { path = "./keymanager-runtime" }
 
 # For Compatible with Openethereum
 cc = "1.0.41"
@@ -50,4 +51,5 @@ members = [
     "common",
     "oasis-parity",
     "test-client",
+    "keymanager-runtime",
 ]
