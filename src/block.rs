@@ -43,8 +43,9 @@ impl OasisBatchHandler {
 
         //FIXME
         // Initialize Ethereum state access functions.
-        /* let state = State::from_existing(
-            Box::new(ThreadLocalMKVS::new(IoContext::create_child(&ctx.io_ctx))),
+        /*let state = State::from_existing(
+            // FIXME
+            // Box::new(ThreadLocalMKVS::new(IoContext::create_child(&ctx.io_ctx))),
             NullBackend,
             H256::zero(),       /* account_start_nonce */
             Default::default(), /* factories */
