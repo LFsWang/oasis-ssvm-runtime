@@ -15,14 +15,16 @@
 // along with Parity.  If not, see <http://www.gnu.org/licenses/>.
 
 //! Web3 rpc implementation.
-/*
+
 use hash::keccak;
 use jsonrpc_core::Result;
 use lazy_static::lazy_static;
 use parity_rpc::v1::{
     traits::Web3,
-    types::{Bytes, H256},
+    //types::Bytes,
 };
+//use bytes::Bytes;
+use ethereum_types::H256;
 use prometheus::{labels, register_int_counter_vec, IntCounterVec};
 
 // Metrics.
@@ -44,7 +46,7 @@ impl Web3Client {
         Web3Client
     }
 }
-
+/*
 impl Web3 for Web3Client {
     fn client_version(&self) -> Result<String> {
         WEB3_RPC_CALLS

@@ -40,13 +40,13 @@ endif
 	all \
 	check check-oasis-core \
 	download-artifacts \
-	runtime test-client gateway\
+	runtime test-client gateway genesis \
 	genesis-update \
 	clean clean-test-e2e \
 	fmt \
 	test test-unit test-e2e
 
-all: runtime gateway test-client
+all: runtime gateway genesis test-client
 	@$(ECHO) "$(CYAN)*** Everything built successfully!$(OFF)"
 
 check: check-oasis-core
@@ -75,6 +75,10 @@ runtime:
 gateway:
 	@$(ECHO) "$(CYAN)*** Building web3-gateway...$(OFF)"
 	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p web3-gateway $(EXTRA_BUILD_ARGS) $(CARGO_BUILD_ARGS)
+
+genesis:
+	@$(ECHO) "$(CYAN)*** Building genesis utilities...$(OFF)"
+	@CARGO_TARGET_DIR=$(RUNTIME_CARGO_TARGET_DIR) cargo build -p genesis $(EXTRA_BUILD_ARGS) $(CARGO_BUILD_ARGS)
 
 test-client:
 	@$(ECHO) "$(CYAN)*** Building test-client...$(OFF)"

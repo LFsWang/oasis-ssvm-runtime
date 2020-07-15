@@ -50,6 +50,7 @@ members = [
     "api",
     "common",
     "gateway",
+    "genesis",
     "oasis-parity",
     "test-client",
     "keymanager-runtime",

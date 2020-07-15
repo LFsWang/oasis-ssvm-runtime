@@ -43,17 +43,19 @@ impl OasisBatchHandler {
 
         //FIXME
         // Initialize Ethereum state access functions.
-        /*let state = State::from_existing(
+        let state = State::from_existing(
             // FIXME
             // Box::new(ThreadLocalMKVS::new(IoContext::create_child(&ctx.io_ctx))),
             NullBackend,
-            H256::zero(),       /* account_start_nonce */
+            H256::zero(),       /* root FIXME*/
+            U256::zero(),       /* account_start_nonce */
             Default::default(), /* factories */
-            Some(Box::new(ConfidentialCtx::new(
+            //FIXME
+       /*     Some(Box::new(ConfidentialCtx::new(
                 ctx.header.previous_hash.as_ref().into(),
                 ctx.io_ctx.clone(),
                 self.key_manager.clone(),
-            ))),
+            ))),*/
         )
         .expect("state initialization must succeed");
 
@@ -65,7 +67,8 @@ impl OasisBatchHandler {
             difficulty: Default::default(),
             gas_limit: *genesis::GAS_LIMIT,
             // TODO: Get 256 last_hashes.
-            last_hashes: Arc::new(vec![ctx.header.previous_hash.as_ref().into()]),
+            // FIXME is it fine ?
+            last_hashes: Arc::new(vec![H256::from_slice(ctx.header.previous_hash.as_ref())]),
             gas_used: Default::default(),
         };
 
@@ -74,7 +77,7 @@ impl OasisBatchHandler {
             state,
             env_info,
             transaction_set: HashSet::new(),
-        });*/
+        });
     }
 
     pub fn end_batch(&self, ctx: &mut TxnContext) {
