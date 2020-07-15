@@ -55,9 +55,10 @@ extern crate oasis_core_runtime;
 
 extern crate oasis_ssvm_runtime_api;
 extern crate oasis_ssvm_runtime_common;
+extern crate oasis_ssvm_runtime_parity;
 
 mod impls;
-//mod informant;
+mod informant;
 //mod middleware;
 // mod pubsub;
 // mod rpc;
@@ -66,7 +67,7 @@ mod impls;
 // mod servers;
 mod traits;
 // mod translator;
-// pub mod util;
+pub mod util;
 
 use std::sync::Arc;
 

@@ -36,6 +36,7 @@ parity-bytes = "0.1"
 
 ## Common functionality between runtime and gateway
 oasis-ssvm-runtime-common = { path = "../common" }
+oasis-ssvm-runtime-parity = { path = "../oasis-parity" }
 
 ## Oasis Core client dependencies.
 oasis-core-client = { git = "https://github.com/oasisprotocol/oasis-core", tag = "v20.7" }
