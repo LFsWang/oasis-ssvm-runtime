@@ -1,6 +1,7 @@
 #[macro_use]
 extern crate clap;
 extern crate oasis_ssvm_runtime_api;
+extern crate serde_bytes;
 extern crate grpcio;
 extern crate io_context;
 extern crate oasis_core_client;
@@ -14,7 +15,11 @@ use grpcio::EnvBuilder;
 use io_context::Context;
 use tokio::runtime::Runtime;
 
-use oasis_ssvm_runtime_api::{with_api, KeyValue};
+// used in runtime_api! macro
+#[allow(unused_imports)]
+use serde_bytes::ByteBuf;
+
+use oasis_ssvm_runtime_api::{*};
 use oasis_core_client::{
     create_txn_api_client,
     transaction::{Query, QueryCondition},

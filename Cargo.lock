@@ -5098,6 +5098,7 @@ dependencies = [
  "oasis-core-client",
  "oasis-core-runtime",
  "oasis-ssvm-runtime-api",
+ "serde_bytes 0.11.5",
  "tokio 0.1.22",
 ]
 

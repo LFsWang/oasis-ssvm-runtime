@@ -56,7 +56,7 @@ pub struct KeyValue {
 pub const METHOD_TX: &'static str = "tx";
 
 runtime_api! {
-    // pub fn tx(ByteBuf) -> ExecutionResult;
+    pub fn tx(ByteBuf) -> ExecutionResult;
 
     //  Gets runtime ID of the runtime.
     pub fn get_runtime_id(()) -> Option<String>;
