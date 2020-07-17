@@ -5917,6 +5917,7 @@ dependencies = [
 name = "web3-gateway"
 version = "0.3.0"
 dependencies = [
+ "account-state",
  "clap",
  "common-types",
  "ethcore",
@@ -5936,6 +5937,7 @@ dependencies = [
  "keccak-hash",
  "lazy_static",
  "log 0.3.9",
+ "machine",
  "oasis-core-client",
  "oasis-core-keymanager-client",
  "oasis-core-runtime",
@@ -5957,6 +5959,7 @@ dependencies = [
  "slog",
  "tokio 0.1.22",
  "tokio-threadpool",
+ "vm",
  "wasmi 0.4.5",
 ]
 
