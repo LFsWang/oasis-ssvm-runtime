@@ -5,14 +5,14 @@ use ethcore;
 use account_state::State;
 use vm::EnvInfo;
 use ethereum_types::{H256, U256};
-use io_context::Context as IoContext;
+// use io_context::Context as IoContext;
 use oasis_core_keymanager_client::KeyManagerClient;
 use oasis_core_runtime::{
     common::logger::get_logger, runtime_context, transaction::Context as TxnContext,
 };
 use oasis_ssvm_runtime_common::{self,
-    confidential::ConfidentialCtx
-    , genesis, parity::NullBackend, storage::ThreadLocalMKVS,
+    //confidential::ConfidentialCtx,
+    genesis, parity::NullBackend, //storage::ThreadLocalMKVS,
 };
 use slog::{info, Logger};
 

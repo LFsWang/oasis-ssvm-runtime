@@ -69,7 +69,6 @@ mod run;
 mod servers;
 mod traits;
 mod translator;
-mod http_common;
 pub mod util;
 
 use std::sync::Arc;
