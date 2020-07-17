@@ -26,8 +26,6 @@ extern crate parking_lot;
 #[macro_use]
 extern crate serde_derive;
 extern crate jsonrpc_core;
-#[macro_use]
-extern crate jsonrpc_macros;
 extern crate ethcore;
 extern crate ethereum_types;
 extern crate failure;
@@ -37,6 +35,7 @@ extern crate hex;
 extern crate io_context;
 extern crate jsonrpc_http_server;
 extern crate jsonrpc_pubsub;
+extern crate jsonrpc_derive;
 extern crate jsonrpc_ws_server;
 extern crate keccak_hash as hash;
 // extern crate parity_reactor;
@@ -59,17 +58,20 @@ extern crate oasis_ssvm_runtime_parity;
 
 mod impls;
 mod informant;
-//mod middleware;
-// mod pubsub;
-// mod rpc;
-// mod rpc_apis;
-// mod run;
-// mod servers;
+mod middleware;
+mod pubsub;
+mod rpc;
+mod rpc_apis;
+mod run;
+mod servers;
 mod traits;
-// mod translator;
+mod translator;
+mod http_common;
 pub mod util;
 
 use std::sync::Arc;
+
+use jsonrpc_http_server::hyper;
 
 use clap::{value_t_or_exit, ArgMatches};
 use ethereum_types::U256;
@@ -79,7 +81,7 @@ use oasis_core_client::{create_txn_api_client, Node, TxnClient};
 use oasis_core_runtime::common::runtime::RuntimeId;
 use oasis_ssvm_runtime_api::*;
 use serde_bytes::ByteBuf;
-/*
+
 pub use self::run::RunningGateway;
 
 with_api! {
@@ -97,7 +99,7 @@ pub fn start(
     ws_rate_limit: usize,
     gas_price: U256,
     jsonrpc_max_batch_size: usize,
-) -> Fallible<RunningGateway> {
+) {/*-> Fallible<RunningGateway> {
     let node_address = args.value_of("node-address").unwrap();
     let runtime_id = value_t_or_exit!(args, "runtime-id", RuntimeId);
 
@@ -125,5 +127,5 @@ pub fn start(
         ws_rate_limit,
         gas_price,
         jsonrpc_max_batch_size,
-    )
-}*/
+    )*/
+}

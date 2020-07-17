@@ -30,26 +30,26 @@ extern crate prometheus;
 extern crate slog;
 extern crate web3_gateway;
 
-// mod metrics;
+mod metrics;
 
 use std::{io::Read, net::SocketAddr, os::unix::net::UnixStream, time::Duration};
 
 use clap::{App, Arg};
 use failure::Fallible;
-/*use fdlimit::raise_fd_limit;
+use fdlimit::raise_fd_limit;
 use slog::{error, info};
 
 use oasis_core_runtime::common::logger::{get_logger, init_logger};
-use oasis_ethwasi_runtime_common::MIN_GAS_PRICE_GWEI;
+use oasis_ssvm_runtime_common::MIN_GAS_PRICE_GWEI;
 use web3_gateway::util;
 
 const METRICS_MODE_PULL: &str = "pull";
 const METRICS_MODE_PUSH: &str = "push";
-*/
+
 fn main() -> Fallible<()> {
     // TODO: is this needed?
     // increase max number of open files
-    /*raise_fd_limit();
+    raise_fd_limit();
 
     let gas_price = MIN_GAS_PRICE_GWEI.to_string();
 
@@ -235,7 +235,7 @@ fn main() -> Fallible<()> {
         gas_price,
         jsonrpc_max_batch_size,
     );
-
+/*
     let client = match client {
         Ok(client) => client,
         Err(err) => {
