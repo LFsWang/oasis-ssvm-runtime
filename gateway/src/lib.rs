@@ -101,7 +101,7 @@ pub fn start(
     ws_rate_limit: usize,
     gas_price: U256,
     jsonrpc_max_batch_size: usize,
-) {/*-> Fallible<RunningGateway> {
+) -> Fallible<RunningGateway> {
     let node_address = args.value_of("node-address").unwrap();
     let runtime_id = value_t_or_exit!(args, "runtime-id", RuntimeId);
 
@@ -129,5 +129,5 @@ pub fn start(
         ws_rate_limit,
         gas_price,
         jsonrpc_max_batch_size,
-    )*/
+    )
 }
