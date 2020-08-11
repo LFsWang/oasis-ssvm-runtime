@@ -235,7 +235,7 @@ impl ApiSet {
     }
 }
 
-/*
+
 #[cfg(test)]
 mod test {
     use super::{Api, ApiSet};
@@ -317,4 +317,3 @@ mod test {
         );
     }
 }
-*/

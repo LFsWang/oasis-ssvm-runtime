@@ -88,7 +88,9 @@ test: test-unit test-e2e
 
 test-unit: check-oasis-core
 	@$(ECHO) "$(CYAN)*** Running unit tests...$(OFF)"
-	@cargo test
+	@cargo test \
+			--features test \
+			-p oasis-ethwasi-runtime-common
 
 test-e2e: check-oasis-core symlink-artifacts
 	@$(ECHO) "$(CYAN)*** Running E2E tests...$(OFF)"

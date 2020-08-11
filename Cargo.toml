@@ -55,3 +55,4 @@ members = [
     "test-client",
     "keymanager-runtime",
 ]
+exclude = ["tests"]

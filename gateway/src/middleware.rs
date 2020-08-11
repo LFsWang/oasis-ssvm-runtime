@@ -218,7 +218,7 @@ impl ws::SessionStats for WsStats {
     }
 }
 
-/*
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -395,4 +395,3 @@ mod tests {
         };
     }
 }
-*/

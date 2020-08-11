@@ -235,7 +235,7 @@ fn main() -> Fallible<()> {
         gas_price,
         jsonrpc_max_batch_size,
     );
-/*
+
     let client = match client {
         Ok(client) => client,
         Err(err) => {
@@ -260,6 +260,6 @@ fn main() -> Fallible<()> {
     client.shutdown();
 
     info!(logger, "Shutdown completed");
-*/
+
     Ok(())
 }
